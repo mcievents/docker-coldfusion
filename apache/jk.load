@@ -1,0 +1,1 @@
+LoadModule    jk_module  "${CF_DIR}/../config/wsconfig/1/mod_jk.so"
