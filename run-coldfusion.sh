@@ -4,6 +4,11 @@ set -e
 CLASSPATH=$CF_DIR/runtime/bin/tomcat-juli.jar:$CF_DIR/bin/cf-bootstrap.jar:$CF_DIR/bin/cf-startup.jar:$CF_DIR/runtime/lib/'*'
 JVMCONFIG=$CF_DIR/bin/jvm.config
 
+sed -i \
+    -e "/^java.args=/s:-Xms[[:digit:]]\\+[kmg]:-Xms$COLDFUSION_MIN_MEM:" \
+    -e "/^java.args=/s:-Xmx[[:digit:]]\\+[kmg]:-Xmx$COLDFUSION_MAX_MEM:" \
+    -e "/^java.args=/s~$~ $COLDFUSION_ADDITIONAL_JVM_ARGS~" $JVMCONFIG
+
 . $CF_DIR/bin/parseargs $JVMCONFIG
 CLASSPATH=$CLASSPATH:$JAVA_CLASSPATH
 JAVA_LIBRARY_PATH=$JAVA_LIBRARYPATH

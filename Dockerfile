@@ -2,7 +2,10 @@ FROM debian:jessie-slim
 
 ENV CF_DIR=/opt/coldfusion/cfusion \
     COLDFUSION_HOST=localhost \
-    COLDFUSION_PORT=8116
+    COLDFUSION_PORT=8116 \
+    COLDFUSION_MIN_MEM=256m \
+    COLDFUSION_MAX_MEM=1024m \
+    COLDFUSION_ADDITIONAL_JVM_ARGS=
 
 # Install Apache and pre-requisites
 RUN apt-get update \
