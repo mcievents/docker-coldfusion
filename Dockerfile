@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM ubuntu:trusty
 
 ENV CF_DIR=/opt/coldfusion/cfusion \
     COLDFUSION_HOST=localhost \
